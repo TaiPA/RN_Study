@@ -12,12 +12,21 @@ import {
   View
 } from 'react-native';
 
-import SelectLanguage from './select-language'
-
-export default class Main extends Component {
+export default class SelectLanguage extends Component {
   render() {
     return (
-      <SelectLanguage />
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Select-language
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.ios.js
+        </Text>
+        <Text style={styles.instructions}>
+          Press Cmd+R to reload,{'\n'}
+          Cmd+D or shake for dev menu
+        </Text>
+      </View>
     );
   }
 }
@@ -32,11 +41,11 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 50,
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    marginBottom: 10,
   },
 });
