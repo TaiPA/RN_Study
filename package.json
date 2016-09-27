@@ -3,10 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "postinstall": "rn-nodeify --install --hack"
   },
   "dependencies": {
     "react": "15.3.2",
-    "react-native": "0.33.0"
+    "react-native": "0.34.0",
+    "react-native-crypto": "^2.0.1",
+    "bip39": "^2.2.0",
+    "bitcoinjs-lib": "^2.3.0",
+    "react-native-randombytes": "^2.1.0"
+  },
+  "devDependencies": {
+    "rn-nodeify": "github:mvayngrib/rn-nodeify"
   }
 }
