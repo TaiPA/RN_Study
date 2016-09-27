@@ -31,6 +31,10 @@ export default class SelectLanguage extends Component {
         <Text style={styles.instructions}>
           {this.generatePassphases()}
         </Text>
+        <Text style={styles.instructions}>
+          Address : 
+          {this.generateBTCAddress()}
+        </Text>
       </View>
     );
   }
@@ -39,6 +43,11 @@ export default class SelectLanguage extends Component {
     let libaa = new AltaAddress();
     let passphases = libaa.createPassphases();
     return passphases;
+  }
+
+  generateBTCAddress() {
+    let libaa = new AltaAddress();
+    return libaa.createAddressBTC(libaa.createPassphases());
   }
 }
 
