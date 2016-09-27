@@ -29,7 +29,9 @@ export default class SelectLanguage extends Component {
               Select your language
             </Text>
           </View>
-          <Button title='Next' onPress={this.onPressBtnNext} style={styles.btn_next} />
+          <View style={styles.btn_next} >
+            <Button title='Next' onPress={this.onPressBtnNext} />
+          </View>
         </View>
         <View style={styles.blank_footer_panel}>
         </View>
@@ -72,7 +74,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor:'#f0f0f0',
     marginLeft:15,
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
+
   },
   title_panel: {
     alignSelf: 'stretch',
@@ -99,6 +103,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   btn_next: {
-    flex:5
+    alignSelf:'flex-end',
+    marginRight:15,
+    marginBottom:10
   }
 });
