@@ -9,34 +9,36 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
 import AltaAddress from '../lib/alta/address';
+import Button from './common/button';
 
 export default class SelectLanguage extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Select-language
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-        <Text style={styles.instructions}>
-          {this.generatePassphases()}
-        </Text>
-        <Text style={styles.instructions}>
-          Address : 
-          {this.generateBTCAddress()}
-        </Text>
-      </View>
+      <Image source={require('../assets/img/background@2x.png')} style={styles.container}>
+        <View style={styles.icon_panel}>
+          <Image source={require('../assets/img/logo-mixed@2x.png')} />
+        </View>
+        <View style={styles.main_panel}>
+          <View style={styles.title_panel}>
+            <Text style={styles.title_panel_text}>
+              Select your language
+            </Text>
+          </View>
+          <Button title='Next' onPress={this.onPressBtnNext} style={styles.btn_next} />
+        </View>
+        <View style={styles.blank_footer_panel}>
+        </View>
+      </Image>
     );
+  }
+
+  onPressBtnNext() {
+    console.log('Press next button');
   }
 
   generatePassphases() {
@@ -58,14 +60,45 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 50,
+  icon_panel: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  main_panel: {
+    flex: 5,
+    alignItems: 'center',
+    backgroundColor: 'rgba(248, 248, 248, 0.6)',
+    borderWidth: 1,
+    borderColor:'#f0f0f0',
+    marginLeft:15,
+    alignSelf: 'stretch'
+  },
+  title_panel: {
+    alignSelf: 'stretch',
+    height: 46,
+    borderWidth: 1,
+    borderColor:'#f0f0f0',
+    borderRadius: 2,
+    backgroundColor: '#f5f5f5',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title_panel_text: {
+    fontSize: 18,
+    color: '#4a4a4a'
+  },
+  blank_footer_panel: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 10,
   },
+  btn_next: {
+    flex:5
+  }
 });
