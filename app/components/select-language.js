@@ -12,6 +12,8 @@ import {
   View
 } from 'react-native';
 
+import AltaAddress from '../lib/alta/address';
+
 export default class SelectLanguage extends Component {
   render() {
     return (
@@ -26,8 +28,17 @@ export default class SelectLanguage extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+        <Text style={styles.instructions}>
+          {this.generatePassphases()}
+        </Text>
       </View>
     );
+  }
+
+  generatePassphases() {
+    let libaa = new AltaAddress();
+    let passphases = libaa.createPassphases();
+    return passphases;
   }
 }
 
