@@ -12,28 +12,24 @@ import {
   Image
 } from 'react-native';
 
-import AltaAddress from '../lib/alta/address';
 import Button from './common/button';
 
-export default class SelectLanguage extends Component {
+export default class TermAndCondition extends Component {
   render() {
     return (
       <Image source={require('../assets/img/background@2x.png')} style={styles.container}>
-        <View style={styles.icon_panel}>
-          <Image source={require('../assets/img/logo-mixed@2x.png')} />
-        </View>
+        <View style={styles.blank_header_panel} />
         <View style={styles.main_panel}>
           <View style={styles.title_panel}>
             <Text style={styles.title_panel_text}>
-              Select your language
+              Terms & Condition
             </Text>
           </View>
           <View style={styles.btn_next} >
             <Button title='Next' onPress={this.onPressBtnNext} />
           </View>
         </View>
-        <View style={styles.blank_footer_panel}>
-        </View>
+        <View style={styles.blank_header_panel} />
       </Image>
     );
   }
@@ -61,8 +57,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  icon_panel: {
-    flex: 2,
+  blank_header_panel: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -75,7 +71,6 @@ const styles = StyleSheet.create({
     marginLeft:15,
     alignSelf: 'stretch',
     justifyContent: 'space-between',
-
   },
   title_panel: {
     alignSelf: 'stretch',
@@ -90,11 +85,6 @@ const styles = StyleSheet.create({
   title_panel_text: {
     fontSize: 18,
     color: '#4a4a4a'
-  },
-  blank_footer_panel: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   instructions: {
     textAlign: 'center',

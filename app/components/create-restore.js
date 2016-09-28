@@ -9,13 +9,14 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TouchableHighlight
 } from 'react-native';
 
 import AltaAddress from '../lib/alta/address';
 import Button from './common/button';
 
-export default class SelectLanguage extends Component {
+export default class CreateRestoreWallet extends Component {
   render() {
     return (
       <Image source={require('../assets/img/background@2x.png')} style={styles.container}>
@@ -25,11 +26,12 @@ export default class SelectLanguage extends Component {
         <View style={styles.main_panel}>
           <View style={styles.title_panel}>
             <Text style={styles.title_panel_text}>
-              Select your language
+              Create or Restore
             </Text>
           </View>
           <View style={styles.btn_next} >
-            <Button title='Next' onPress={this.onPressBtnNext} />
+            <Button title='Create New Wallet' type='main' onPress={this.onPressBtnNext} style={styles.main_btn}/>
+            <Button title='Restore Wallet' type='ghost' onPress={this.onPressBtnNext} style={styles.main_btn}/>
           </View>
         </View>
         <View style={styles.blank_footer_panel}>
@@ -42,15 +44,28 @@ export default class SelectLanguage extends Component {
     console.log('Press next button');
   }
 
-  generatePassphases() {
-    let libaa = new AltaAddress();
-    let passphases = libaa.createPassphases();
-    return passphases;
+  createBtnCreateNewWallet() {
+    return (
+      <TouchableHighlight 
+        onPress={this.props.onPress}
+        underlayColor='#6d982f'>
+        <Text style={styles.text}>
+          Create New Wallet
+        </Text>
+      </TouchableHighlight>
+    );
   }
 
-  generateBTCAddress() {
-    let libaa = new AltaAddress();
-    return libaa.createAddressBTC(libaa.createPassphases());
+  createBtnRestoreWallet() {
+  return (
+      <TouchableHighlight 
+        onPress={this.props.onPress}
+        underlayColor='#6d982f'>
+        <Text style={styles.text}>
+          Restore Wallet
+        </Text>
+      </TouchableHighlight>
+    );
   }
 }
 
@@ -68,17 +83,15 @@ const styles = StyleSheet.create({
   },
   main_panel: {
     flex: 5,
-    alignItems: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
     backgroundColor: 'rgba(248, 248, 248, 0.6)',
     borderWidth: 1,
     borderColor:'#f0f0f0',
     marginLeft:15,
     alignSelf: 'stretch',
-    justifyContent: 'space-between',
-
   },
   title_panel: {
-    alignSelf: 'stretch',
     height: 46,
     borderWidth: 1,
     borderColor:'#f0f0f0',
@@ -102,8 +115,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   btn_next: {
-    alignSelf:'flex-end',
-    marginRight:15,
-    marginBottom:10
+    flex:1,
+    alignItems: 'stretch',
+    justifyContent: 'center'
+  },
+  main_btn: {
+    height: 60,
+    width: null,
+    marginLeft: 25,
+    marginRight: 25,
+    marginBottom: 25
   }
 });

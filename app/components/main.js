@@ -13,11 +13,13 @@ import {
 } from 'react-native';
 
 import SelectLanguage from './select-language'
+import TermAndCondition from './term-condition'
+import CreateRestoreWallet from './create-restore'
 
 export default class Main extends Component {
   render() {
     return (
-      <SelectLanguage />
+      <CreateRestoreWallet />
     );
   }
 }
