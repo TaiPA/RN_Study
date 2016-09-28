@@ -121,11 +121,12 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   inputName: {
-    height: 33,
+    height: 40,
     borderWidth: 1,
     borderColor: '#dbdbdb',
     backgroundColor: '#ffffff',
     fontSize: 13,
     color: '#4a4a4a',
+    paddingLeft: 10
   }
 });
