@@ -9,32 +9,44 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TextInput,
+  TouchableWithoutFeedback
 } from 'react-native';
 
-import AltaAddress from '../lib/alta/address';
 import Button from './common/button';
-
-export default class SelectLanguage extends Component {
+var DismissKeyboard = require('dismissKeyboard');
+export default class SetWalletName extends Component {
   render() {
     return (
+      <TouchableWithoutFeedback onPress={()=> DismissKeyboard()}>
       <Image source={require('../assets/img/background@2x.png')} style={styles.container}>
-        <View style={styles.icon_panel}>
-          <Image source={require('../assets/img/logo-mixed@2x.png')} />
-        </View>
+        <View style={styles.blank_header_panel} />
         <View style={styles.main_panel}>
           <View style={styles.title_panel}>
             <Text style={styles.title_panel_text}>
-              Select your language
+              Your wallet Name
             </Text>
           </View>
-          <View style={styles.btn_next} >
-            <Button title='Next' type='main' onPress={this.onPressBtnNext} />
+          <Text>
+            This is just your wallet name.
+          </Text>
+          <View style={styles.input_panel}>
+            <Text>Wallet Name</Text>
+            <TextInput
+              style={styles.inputName}
+              placeholder="Type here to translate!"
+              onChangeText={(text) => this.setState({text})}
+            />
+          </View>
+          <View style={styles.btn_panel} >
+            <Button title='Back' type='ghost' onPress={this.onPressBtnNext} />
+            <Button title='Done' type='main' onPress={this.onPressBtnNext} />
           </View>
         </View>
-        <View style={styles.blank_footer_panel}>
-        </View>
+        <View style={styles.blank_header_panel} />
       </Image>
+      </TouchableWithoutFeedback>
     );
   }
 
@@ -61,8 +73,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  icon_panel: {
-    flex: 2,
+  blank_header_panel: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -75,7 +87,6 @@ const styles = StyleSheet.create({
     marginLeft:15,
     alignSelf: 'stretch',
     justifyContent: 'space-between',
-
   },
   title_panel: {
     alignSelf: 'stretch',
@@ -91,19 +102,30 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#4a4a4a'
   },
-  blank_footer_panel: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 10,
   },
-  btn_next: {
-    alignSelf:'flex-end',
+  btn_panel: {
+    alignSelf:'stretch',
     marginRight:15,
-    marginBottom:10
+    marginLeft:15,
+    marginBottom:10,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  input_panel: {
+    alignSelf: 'stretch',
+    marginLeft: 15,
+    marginRight: 15,
+  },
+  inputName: {
+    height: 33,
+    borderWidth: 1,
+    borderColor: '#dbdbdb',
+    backgroundColor: '#ffffff',
+    fontSize: 13,
+    color: '#4a4a4a',
   }
 });

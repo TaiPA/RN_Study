@@ -15,11 +15,12 @@ import {
 import SelectLanguage from './select-language'
 import TermAndCondition from './term-condition'
 import CreateRestoreWallet from './create-restore'
+import SetWalletName from './set-wallet-name'
 
 export default class Main extends Component {
   render() {
     return (
-      <CreateRestoreWallet />
+      <SetWalletName />
     );
   }
 }

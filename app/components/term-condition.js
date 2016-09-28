@@ -26,7 +26,7 @@ export default class TermAndCondition extends Component {
             </Text>
           </View>
           <View style={styles.btn_next} >
-            <Button title='Next' onPress={this.onPressBtnNext} />
+            <Button title='Next' type='main' onPress={this.onPressBtnNext} />
           </View>
         </View>
         <View style={styles.blank_header_panel} />

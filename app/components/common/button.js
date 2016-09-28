@@ -43,6 +43,10 @@ export default class Button extends Component {
       underlayColor = '#6d982f';
     }
 
+    if (this.props.isDisable === true) {
+      btn_style.push(styles.disable);
+    }
+
     return (
       <TouchableHighlight style={[btn_style, this.props.style]}
         onPress={this.props.onPress}
@@ -61,6 +65,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 128,
     height: 38,
+  },
+  disable: {
+    backgroundColor: '#d8d8d8'
   },
   type_main: {
     backgroundColor: '#7eb62e'
