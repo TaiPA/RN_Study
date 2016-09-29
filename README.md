@@ -15,6 +15,7 @@ References
 https://github.com/mvayngrib/rn-nodeify
 https://github.com/bitcoinjs/bitcoinjs-lib
 https://github.com/bitcoinjs/bip39
+https://github.com/ethereumjs/ethereumjs-wallet
 
 =========================================
 First install
