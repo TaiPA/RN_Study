@@ -11,8 +11,13 @@ import {
   View
 } from 'react-native';
 
+import Ether from '../lib/alta/ethereum'
+
 export default class Dashboard extends Component {
   render() {
+    let eth = new Ether();
+    eth.createAddr();
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
