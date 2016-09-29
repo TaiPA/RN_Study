@@ -25,3 +25,8 @@ cd RN_Study
 npm install
 react-native link react-native-randombytes
 react-native run-ios
+
+=========================================
+About crypto
+Which libs in node_modules that have "var crypto = require(crypto');"
+have to change to : "var crypto = require(react-native-crypto');"
