@@ -21,7 +21,7 @@ import Dashboard from './dashboard'
 export default class Main extends Component {
   render() {
     return (
-      <SetWalletName />
+      <Dashboard />
     );
   }
 }
