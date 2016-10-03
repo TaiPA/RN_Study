@@ -15,37 +15,39 @@ import {
 } from 'react-native';
 
 import Button from './common/button';
+import ClvBox from './common/clv-box'
 var DismissKeyboard = require('dismissKeyboard');
+
 export default class SetWalletName extends Component {
   render() {
     return (
-      <TouchableWithoutFeedback onPress={()=> DismissKeyboard()}>
-      <Image source={require('../assets/img/background@2x.png')} style={styles.container}>
-        <View style={styles.blank_header_panel} />
-        <View style={styles.main_panel}>
-          <View style={styles.title_panel}>
-            <Text style={styles.title_panel_text}>
-              Your wallet Name
-            </Text>
-          </View>
-          <Text>
-            This is just your wallet name.
-          </Text>
-          <View style={styles.input_panel}>
-            <Text>Wallet Name</Text>
-            <TextInput
-              style={styles.inputName}
-              placeholder="Type here to translate!"
-              onChangeText={(text) => this.setState({text})}
-            />
-          </View>
-          <View style={styles.btn_panel} >
-            <Button title='Back' type='ghost' onPress={this.onPressBtnNext} />
-            <Button title='Done' type='main' onPress={this.onPressBtnNext} />
-          </View>
-        </View>
-        <View style={styles.blank_header_panel} />
-      </Image>
+      <TouchableWithoutFeedback onPress={() => DismissKeyboard() }>
+        <Image source={require('../assets/img/background@2x.png') } style={styles.container}>
+          <View style={styles.blank_panel} />
+          <ClvBox title={'Your wallet Name'} style={styles.clv_box}>
+            <View style={styles.content_panel}>
+              <View style={styles.description_panel}>
+                <Text style={styles.description_text}>
+                  This is just your wallet name.
+                </Text>
+              </View>
+              <View style={styles.input_panel}>
+                <Text>Wallet Name</Text>
+                <TextInput
+                  style={styles.inputName}
+                  placeholder="Type here to translate!"
+                  onChangeText={(text) => this.setState({ text }) }
+                  />
+              </View>
+              <View style={styles.blank_panel_2} />
+            </View>
+            <View style={styles.button_panel}>
+              <Button title='Back' type='ghost' onPress={this.onPressBtnNext} />
+              <Button title='Done' type='main' onPress={this.onPressBtnNext} />
+            </View>
+          </ClvBox>
+          <View style={styles.blank_panel} />
+        </Image>
       </TouchableWithoutFeedback>
     );
   }
@@ -73,52 +75,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  blank_header_panel: {
+  blank_panel: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  main_panel: {
-    flex: 5,
-    alignItems: 'center',
-    backgroundColor: 'rgba(248, 248, 248, 0.6)',
-    borderWidth: 1,
-    borderColor:'#f0f0f0',
-    marginLeft:15,
-    alignSelf: 'stretch',
-    justifyContent: 'space-between',
-  },
-  title_panel: {
-    alignSelf: 'stretch',
-    height: 46,
-    borderWidth: 1,
-    borderColor:'#f0f0f0',
-    borderRadius: 2,
-    backgroundColor: '#f5f5f5',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title_panel_text: {
-    fontSize: 18,
-    color: '#4a4a4a'
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 10,
-  },
-  btn_panel: {
-    alignSelf:'stretch',
-    marginRight:15,
-    marginLeft:15,
-    marginBottom:10,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
   },
   input_panel: {
     alignSelf: 'stretch',
     marginLeft: 15,
     marginRight: 15,
+    flex: 6,
+    justifyContent: 'center',
   },
   inputName: {
     height: 40,
@@ -127,6 +94,34 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     fontSize: 13,
     color: '#4a4a4a',
-    paddingLeft: 10
-  }
+    paddingLeft: 10,
+    marginTop: 5
+  },
+  clv_box: {
+    flex: 5
+  },
+  content_panel: {
+    flex: 1
+  },
+  button_panel: {
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  description_panel: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    flex: 2,
+  },
+  description_text: {
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+  blank_panel_2: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
