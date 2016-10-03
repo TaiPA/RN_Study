@@ -11,14 +11,17 @@ import {
     View
 } from 'react-native';
 
-export default class Sample extends Component {
+export default class ClvBox extends Component {
     render() {
         return (
-            <View style={styles.main_panel}>
+            <View style={[styles.main_panel, this.props.style]}>
                 <View style={styles.title_panel}>
                     <Text style={styles.title_panel_text}>
                         {this.props.title}
                     </Text>
+                </View>
+                <View style={[styles.main_child_panel, this.props.body_style]} >
+                    {this.props.children}
                 </View>
             </View>
         );
@@ -26,23 +29,15 @@ export default class Sample extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
     main_panel: {
-        alignItems: 'center',
+        alignItems: 'stretch',
+        alignSelf: 'stretch',
         backgroundColor: 'rgba(248, 248, 248, 0.6)',
         borderWidth: 1,
         borderColor: '#f0f0f0',
         marginLeft: 15,
-        alignSelf: 'stretch',
-        justifyContent: 'space-between',
     },
     title_panel: {
-        alignSelf: 'stretch',
         height: 46,
         borderWidth: 1,
         borderColor: '#f0f0f0',
@@ -55,4 +50,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#4a4a4a'
     },
+    main_child_panel: {
+        flex:1
+    }
 });

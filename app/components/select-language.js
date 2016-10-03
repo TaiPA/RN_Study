@@ -14,24 +14,21 @@ import {
 
 import AltaAddress from '../lib/alta/address';
 import Button from './common/button';
+import ClvBox from './common/clv-box'
 
 export default class SelectLanguage extends Component {
   render() {
     return (
-      <Image source={require('../assets/img/background@2x.png')} style={styles.container}>
+      <Image source={require('../assets/img/background@2x.png') } style={styles.container}>
         <View style={styles.icon_panel}>
-          <Image source={require('../assets/img/logo-mixed@2x.png')} />
+          <Image source={require('../assets/img/logo-mixed@2x.png') } />
         </View>
-        <View style={styles.main_panel}>
-          <View style={styles.title_panel}>
-            <Text style={styles.title_panel_text}>
-              Select your language
-            </Text>
-          </View>
-          <View style={styles.btn_next} >
+        <ClvBox title={'Select Language'} style={styles.clv_box}>
+          <View style={styles.content_panel}></View>
+          <View style={styles.button_panel}>
             <Button title='Next' type='main' onPress={this.onPressBtnNext} />
           </View>
-        </View>
+        </ClvBox>
         <View style={styles.blank_footer_panel}>
         </View>
       </Image>
@@ -66,44 +63,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  main_panel: {
-    flex: 5,
-    alignItems: 'center',
-    backgroundColor: 'rgba(248, 248, 248, 0.6)',
-    borderWidth: 1,
-    borderColor:'#f0f0f0',
-    marginLeft:15,
-    alignSelf: 'stretch',
-    justifyContent: 'space-between',
-
+  clv_box: {
+    flex: 5
   },
-  title_panel: {
-    alignSelf: 'stretch',
-    height: 46,
-    borderWidth: 1,
-    borderColor:'#f0f0f0',
-    borderRadius: 2,
-    backgroundColor: '#f5f5f5',
-    alignItems: 'center',
-    justifyContent: 'center',
+  content_panel: {
+    flex: 1
   },
-  title_panel_text: {
-    fontSize: 18,
-    color: '#4a4a4a'
+  button_panel: {
+    alignSelf: 'flex-end',
+    marginRight: 10,
+    marginBottom: 10
   },
   blank_footer_panel: {
     flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 10,
-  },
-  btn_next: {
-    alignSelf:'flex-end',
-    marginRight:15,
-    marginBottom:10
   }
 });
