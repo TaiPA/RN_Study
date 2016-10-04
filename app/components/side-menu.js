@@ -17,15 +17,11 @@ export default class SideMenu extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Button title={'Overview'} type={'main'} onPress={this.onItemSelect() }/>
-                <Button title={'Wallet'} type={'main'} onPress={this.onItemSelect() }/>
-                <Button title={'Option'} type={'main'} onPress={this.onItemSelect() }/>
+                <Button title={'Overview'} type={'main'} onPress={() => this.props.onItemSelected('overview') }/>
+                <Button title={'Wallet'} type={'main'} onPress={() => this.props.onItemSelected('wallet') }/>
+                <Button title={'Options'} type={'main'} onPress={() => this.props.onItemSelected('options') }/>
             </View>
         );
-    }
-
-    onItemSelect() {
-        console.log('menu:');
     }
 }
 

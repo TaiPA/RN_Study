@@ -12,29 +12,10 @@ import {
   Image, TouchableOpacity
 } from 'react-native';
 
-// import Ether from '../lib/alta/ethereum'
 import ClvBox from './common/clv-box'
 const SideMenu = require('react-native-side-menu');
 import Menu from './side-menu';
-
-
-class Button extends Component {
-  handlePress(e) {
-    if (this.props.onPress) {
-      this.props.onPress(e);
-    }
-  }
-
-  render() {
-    return (
-      <TouchableOpacity
-        onPress={this.handlePress.bind(this) }
-        style={this.props.style}>
-        <Text>{this.props.children}</Text>
-      </TouchableOpacity>
-    );
-  }
-}
+import SideMenuButton from './common/button-menu';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -54,15 +35,15 @@ export default class Dashboard extends Component {
 
   onMenuItemSelected(item) {
     console.log('Menu: ' + item);
-    // this.setState({
-    //   isOpen: false
-    // });
+    console.log(this.state.selectedItem);
+    this.setState({
+      isOpen: false,
+      selectedItem: item
+    });
   }
 
   render() {
-    // let eth = new Ether();
-    // eth.createAddr();
-    const menu = <Menu onItemSelected={this.onMenuItemSelected} />;
+    const menu = <Menu onItemSelected={this.onMenuItemSelected.bind(this) } />;
 
     return (
       <SideMenu
@@ -84,10 +65,7 @@ export default class Dashboard extends Component {
             Current selected menu item is: {this.state.selectedItem}
           </Text>
         </View>
-        <Button style={styles.button} onPress={() => this.toggle() }>
-          <Image
-            source={require('../assets/img/menu.png') } style={{ width: 32, height: 32 }} />
-        </Button>
+        <SideMenuButton style={styles.button} onPress={() => this.toggle() }/>
       </SideMenu>
     );
   }
