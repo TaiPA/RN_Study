@@ -50,7 +50,12 @@ export default class Dashboard extends Component {
         menu={menu}
         isOpen={this.state.isOpen}
         onChange={(isOpen) => this.updateMenuState(isOpen) }>
-        <View style={styles.container}>
+        <Image source={require('../assets/img/background@2x.png') } style={styles.container}>
+          <View style={styles.status_panel} />
+          <View style={styles.header_panel}>
+            <SideMenuButton style={styles.button} onPress={() => this.toggle() }/>
+            <Text style={styles.header_title}>{this.state.selectedItem}</Text>
+          </View>
           <Text style={styles.welcome}>
             Welcome to React Native!
           </Text>
@@ -64,8 +69,7 @@ export default class Dashboard extends Component {
           <Text style={styles.instructions}>
             Current selected menu item is: {this.state.selectedItem}
           </Text>
-        </View>
-        <SideMenuButton style={styles.button} onPress={() => this.toggle() }/>
+        </Image>
       </SideMenu>
     );
   }
@@ -73,9 +77,8 @@ export default class Dashboard extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    position: 'absolute',
-    top: 20,
-    padding: 10,
+    marginLeft: 15,
+    marginRight: 20
   },
   caption: {
     fontSize: 20,
@@ -84,8 +87,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
   },
   welcome: {
@@ -98,4 +100,21 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  header_title: {
+    fontSize: 18,
+    color: '#4a4a4a'
+  },
+  status_panel: {
+    height: 22
+  },
+  header_panel: {
+    flexDirection: 'row',
+    height: 50,
+    alignItems: 'center',
+    // justifyContent: 'center',
+    borderBottomWidth: 2,
+    // borderWidth: 1,
+    borderColor: 'grey',
+
+  }
 });

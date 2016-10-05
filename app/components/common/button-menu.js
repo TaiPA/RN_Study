@@ -6,6 +6,8 @@ import {
     Image, TouchableOpacity
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 export default class SideMenuButton extends Component {
     handlePress(e) {
         if (this.props.onPress) {
@@ -18,10 +20,19 @@ export default class SideMenuButton extends Component {
             <TouchableOpacity
                 onPress={this.handlePress.bind(this) }
                 style={this.props.style}>
-                <Image
-                    source={require('../../assets/img/menu.png') }
-                    style={{ width: 32, height: 32 }} />
+                <Icon name={'navicon'} style={[styles.button]}/>
             </TouchableOpacity>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    button: {
+        // width: 30,
+        // height: 30,
+        fontSize: 25,
+        textAlign: 'center',
+        // borderWidth:1,
+        // borderColor:'red'
+    }
+});
