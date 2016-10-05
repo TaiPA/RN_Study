@@ -50,18 +50,18 @@ export default class SideMenu extends Component {
                     this.props.onItemSelected(title);
                     this.setState({ selectedItem: title });
                 } }
-                style={styles.menuItemContainer}
+                style={this.state.selectedItem !== title ? styles.menuItemContainer : styles.menuItemContainer_selected}
                 underlayColor='#cccccc'>
                 <View style={styles.menuItem}>
-                    <Icon name={iconName} style={styles.icon}/>
-                    <Text style={styles.menuItemTitle}>{title}</Text>
+                    <Icon name={iconName} style={this.state.selectedItem !== title ? styles.icon : styles.icon_selected}/>
+                    <Text style={this.state.selectedItem !== title ? styles.menuItemTitle : styles.menuItemTitle_selected}>{title}</Text>
                 </View>
             </TouchableHighlight>
         )
     }
 
     selectItem(title) {
-        
+
     }
 }
 
@@ -86,6 +86,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#00000000',
     },
     menuItemContainer_selected: {
+        marginLeft: 5,
+        marginRight: 5,
+        borderRadius: 3,
+        height: 50,
+        alignItems: 'center',
         backgroundColor: '#a0a0a0',
     },
     menuItem: {
@@ -101,12 +106,20 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#4a4a4a',
     },
+    icon_selected: {
+        fontSize: 16,
+        width: 40,
+        textAlign: 'center',
+        color: '#ffffff',
+    },
     menuItemTitle: {
         color: '#4a4a4a',
         fontWeight: 'bold',
         fontSize: 14
     },
-    menuItem_selected: {
+    menuItemTitle_selected: {
+        fontWeight: 'bold',
+        fontSize: 14,
         color: '#ffffff',
     }
 });
