@@ -16,11 +16,12 @@ import {
 import AltaAddress from '../lib/alta/address';
 import Button from './common/button';
 import ClvBox from './common/clv-box';
+import BackgroundImg from './common/background_img';
 
 export default class CreateRestoreWallet extends Component {
   render() {
     return (
-      <Image source={require('../assets/img/background@2x.png') } style={styles.container}>
+      <BackgroundImg>
         <View style={styles.icon_panel}>
           <Image source={require('../assets/img/logo-mixed@2x.png') } />
         </View>
@@ -30,7 +31,7 @@ export default class CreateRestoreWallet extends Component {
         </ClvBox>
         <View style={styles.blank_footer_panel}>
         </View>
-      </Image>
+      </BackgroundImg>
     );
   }
 
@@ -40,12 +41,6 @@ export default class CreateRestoreWallet extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
   icon_panel: {
     flex: 2,
     justifyContent: 'center',

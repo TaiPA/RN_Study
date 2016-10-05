@@ -13,12 +13,13 @@ import {
 } from 'react-native';
 
 import Button from './common/button';
-import ClvBox from './common/clv-box'
+import ClvBox from './common/clv-box';
+import BackgroundImg from './common/background_img';
 
 export default class TermAndCondition extends Component {
   render() {
     return (
-      <Image source={require('../assets/img/background@2x.png') } style={styles.container}>
+      <BackgroundImg>
         <View style={styles.blank_header_panel} />
         <ClvBox title={'Terms & Condition'} style={styles.clv_box}>
           <View style={styles.content_panel}></View>
@@ -27,7 +28,7 @@ export default class TermAndCondition extends Component {
           </View>
         </ClvBox>
         <View style={styles.blank_header_panel} />
-      </Image>
+      </BackgroundImg>
     );
   }
 
@@ -48,12 +49,6 @@ export default class TermAndCondition extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
   blank_header_panel: {
     flex: 1,
     justifyContent: 'center',

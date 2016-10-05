@@ -15,14 +15,15 @@ import {
 } from 'react-native';
 
 import Button from './common/button';
-import ClvBox from './common/clv-box'
+import ClvBox from './common/clv-box';
+import BackgroundImg from './common/background_img';
 var DismissKeyboard = require('dismissKeyboard');
 
 export default class SetWalletName extends Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={() => DismissKeyboard() }>
-        <Image source={require('../assets/img/background@2x.png') } style={styles.container}>
+        <BackgroundImg>
           <View style={styles.blank_panel} />
           <ClvBox title={'Your wallet Name'} style={styles.clv_box}>
             <View style={styles.content_panel}>
@@ -47,7 +48,7 @@ export default class SetWalletName extends Component {
             </View>
           </ClvBox>
           <View style={styles.blank_panel} />
-        </Image>
+        </BackgroundImg>
       </TouchableWithoutFeedback>
     );
   }
@@ -69,12 +70,6 @@ export default class SetWalletName extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
   blank_panel: {
     flex: 1,
     justifyContent: 'center',

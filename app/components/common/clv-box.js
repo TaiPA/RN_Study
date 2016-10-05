@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#f0f0f0',
         marginLeft: 15,
+        marginRight: 15,
     },
     title_panel: {
         height: 46,

@@ -16,6 +16,7 @@ import ClvBox from './common/clv-box'
 const SideMenu = require('react-native-side-menu');
 import Menu from './side-menu';
 import SideMenuButton from './common/button-menu';
+import BackgroundImg from './common/background_img';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -50,71 +51,40 @@ export default class Dashboard extends Component {
         menu={menu}
         isOpen={this.state.isOpen}
         onChange={(isOpen) => this.updateMenuState(isOpen) }>
-        <Image source={require('../assets/img/background@2x.png') } style={styles.container}>
+        <BackgroundImg>
           <View style={styles.status_panel} />
           <View style={styles.header_panel}>
             <SideMenuButton style={styles.button} onPress={() => this.toggle() }/>
             <Text style={styles.header_title}>{this.state.selectedItem}</Text>
           </View>
-          <Text style={styles.welcome}>
-            Welcome to React Native!
-          </Text>
-          <Text style={styles.instructions}>
-            To get started, edit index.ios.js
-          </Text>
-          <Text style={styles.instructions}>
-            Press Cmd+R to reload, {'\n'}
-            Cmd+Control+Z for dev menu
-          </Text>
-          <Text style={styles.instructions}>
-            Current selected menu item is: {this.state.selectedItem}
-          </Text>
-        </Image>
+        </BackgroundImg>
       </SideMenu>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    marginLeft: 15,
-    marginRight: 20
-  },
-  caption: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    alignItems: 'center',
-  },
-  container: {
-    flex: 1,
-    alignItems: 'stretch',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  header_title: {
-    fontSize: 18,
-    color: '#4a4a4a'
-  },
   status_panel: {
-    height: 22
+    height: 22,
+    backgroundColor: '#ffffff',
+    // borderWidth: 1,
+    // borderColor: 'red'
   },
   header_panel: {
     flexDirection: 'row',
     height: 50,
     alignItems: 'center',
-    // justifyContent: 'center',
-    borderBottomWidth: 2,
-    // borderWidth: 1,
+    borderBottomWidth: 3,
     borderColor: 'grey',
-
-  }
+    backgroundColor: '#ffffff'
+  },
+  button: {
+    marginLeft: 15,
+    marginRight: 20
+  },
+  header_title: {
+    fontSize: 18,
+    color: '#4a4a4a',
+    backgroundColor: '#00000000'
+  },
 });
