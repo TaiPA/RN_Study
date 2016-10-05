@@ -12,6 +12,7 @@ import {
   View
 } from 'react-native';
 
+import Sample from './sample'
 import SelectLanguage from './select-language'
 import TermAndCondition from './term-condition'
 import CreateRestoreWallet from './create-restore'

@@ -10,6 +10,8 @@ import {
   Text,
   View
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 export default class Sample extends Component {
   render() {
@@ -22,11 +24,24 @@ export default class Sample extends Component {
           To get started, edit index.ios.js
         </Text>
         <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
+          Press Cmd+R to reload, {'\n'}
           Cmd+D or shake for dev menu
         </Text>
+        {this.myButton()}
       </View>
     );
+  }
+
+  myButton() {
+    return (
+      <Icon.Button name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
+        Login with Facebook
+      </Icon.Button>
+    )
+  }
+
+  loginWithFacebook() {
+    
   }
 }
 

@@ -1,6 +1,9 @@
 package com.rn_study;
 
 import com.facebook.react.ReactActivity;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.tradle.react.UdpSocketsModule;
+import com.peel.react.TcpSocketsModule;
 
 public class MainActivity extends ReactActivity {
 
