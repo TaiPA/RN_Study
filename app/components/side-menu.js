@@ -44,17 +44,20 @@ export default class SideMenu extends Component {
     }
 
     menuItem(iconName, title) {
+        itemStyle = this.state.selectedItem === title ? styles.menuItemContainer_selected : styles.menuItemContainer_normal;
+        iconStyle = this.state.selectedItem === title ? styles.icon_selected : styles.icon_normal;
+        textStyle = this.state.selectedItem === title ? styles.menuItemTitle_selected : styles.menuItemTitle_normal;
         return (
             <TouchableHighlight
                 onPress={() => {
                     this.props.onItemSelected(title);
                     this.setState({ selectedItem: title });
                 } }
-                style={this.state.selectedItem !== title ? styles.menuItemContainer : styles.menuItemContainer_selected}
+                style={[styles.menuItemContainer, itemStyle]}
                 underlayColor='#cccccc'>
                 <View style={styles.menuItem}>
-                    <Icon name={iconName} style={this.state.selectedItem !== title ? styles.icon : styles.icon_selected}/>
-                    <Text style={this.state.selectedItem !== title ? styles.menuItemTitle : styles.menuItemTitle_selected}>{title}</Text>
+                    <Icon name={iconName} style={[styles.icon, iconStyle]}/>
+                    <Text style={[styles.menuItemTitle, textStyle]}>{title}</Text>
                 </View>
             </TouchableHighlight>
         )
@@ -82,15 +85,12 @@ const styles = StyleSheet.create({
         marginRight: 5,
         borderRadius: 3,
         height: 50,
-        alignItems: 'center',
+        alignItems: 'center'
+    },
+    menuItemContainer_normal: {
         backgroundColor: '#00000000',
     },
     menuItemContainer_selected: {
-        marginLeft: 5,
-        marginRight: 5,
-        borderRadius: 3,
-        height: 50,
-        alignItems: 'center',
         backgroundColor: '#a0a0a0',
     },
     menuItem: {
@@ -104,22 +104,22 @@ const styles = StyleSheet.create({
         fontSize: 16,
         width: 40,
         textAlign: 'center',
-        color: '#4a4a4a',
+    },
+    icon_normal: {
+        color: '#4a4a4a'
     },
     icon_selected: {
-        fontSize: 16,
-        width: 40,
-        textAlign: 'center',
-        color: '#ffffff',
+        color: '#ffffff'
     },
     menuItemTitle: {
         color: '#4a4a4a',
         fontWeight: 'bold',
         fontSize: 14
     },
+    menuItemTitle_normal: {
+        color: '#4a4a4a',
+    },
     menuItemTitle_selected: {
-        fontWeight: 'bold',
-        fontSize: 14,
         color: '#ffffff',
     }
 });
