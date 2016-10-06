@@ -31,7 +31,11 @@ export default class SideMenu extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image source={require('../assets/img/logo-mixed.png') } style={styles.logo} />
+                <View style={styles.logo_panel}>
+                    <View style={styles.logo_panel_blank_area} />
+                    <Image source={require('../assets/img/logo-mixed.png') } style={styles.logo} />
+                    <View style={styles.logo_panel_blank_area} />
+                </View>
                 {this.menuItem('pie-chart', 'Overview') }
                 {this.menuItem('btc', 'Wallet') }
                 {this.menuItem('history', 'History') }
@@ -72,19 +76,26 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f2f2f2',
+        alignItems: 'stretch',
+    },
+    logo_panel: {
+        flexDirection: 'row',
+        marginTop: 20,
+        marginBottom: 10
+    },
+    logo_panel_blank_area: {
+        flex:1
     },
     logo: {
-        marginTop: 30,
-        marginBottom: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
+        flex: 5,
+        resizeMode: 'contain',
+        width: null
     },
     menuItemContainer: {
         marginLeft: 5,
         marginRight: 5,
         borderRadius: 3,
-        height: 50,
+        height: 45,
         alignItems: 'center'
     },
     menuItemContainer_normal: {

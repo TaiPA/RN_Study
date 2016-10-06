@@ -23,10 +23,13 @@ git clone https://github.com/TaiPA/RN_Study.git
 git checkout develop
 cd RN_Study
 npm install
+rnpm link
 react-native link react-native-randombytes
 react-native run-ios
 
 =========================================
 About crypto
-Which libs in node_modules that have "var crypto = require(crypto');"
-have to change to : "var crypto = require(react-native-crypto');"
+Which libs in node_modules that have "var crypto = require('crypto');"
+have to change to : "var crypto = require('react-native-crypto');"
+1. hdkey
+2. ethereumjs-wallet
