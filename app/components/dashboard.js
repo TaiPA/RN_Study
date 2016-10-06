@@ -18,6 +18,8 @@ import Menu from './side-menu';
 import SideMenuButton from './common/button-menu';
 import BackgroundImg from './common/background_img';
 
+import Wallet from './wallet/wallet';
+
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -57,6 +59,7 @@ export default class Dashboard extends Component {
             <SideMenuButton style={styles.button} onPress={() => this.toggle() }/>
             <Text style={styles.header_title}>{this.state.selectedItem}</Text>
           </View>
+          <Wallet />
         </BackgroundImg>
       </SideMenu>
     );
