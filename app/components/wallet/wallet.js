@@ -19,53 +19,22 @@ import {
 // import CommonStyle from './styles/common';
 // import BackgroundImg from './common/background_img';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Bitcoin from '../../lib/alta/bitcoin';
+import Litecoin from '../../lib/alta/litecoin';
+import Dogecoin from '../../lib/alta/dogecoin';
+import Dashcoin from '../../lib/alta/dashcoin';
+import Ethereum from '../../lib/alta/ethereum';
+
+
 export default class Wallet extends Component {
   render() {
-    let btc = {
-      title: 'Bitcoin',
-      unit_text: 'BTC',
-      persent: '0',
-      value: '0.00005',
-      value_fiat: '$0',
-      icon: require('../../assets/img/coins/bitcoin.png'),
-      color: '#f6931a'
-    };
-    let eth = {
-      title: 'Ethereum',
-      unit_text: 'ETH',
-      persent: '0',
-      value: '0.00005',
-      value_fiat: '$0',
-      icon: require('../../assets/img/coins/ethereum.png'),
-      color: '#62688f'
-    };
-    let ltc = {
-      title: 'Litecoin',
-      unit_text: 'LTC',
-      persent: '0',
-      value: '0.00005',
-      value_fiat: '$0',
-      icon: require('../../assets/img/coins/litecoin.png'),
-      color: '#c0c4c5'
-    };
-    let doge = {
-      title: 'Dogecoin',
-      unit_text: 'DOGE',
-      persent: '0',
-      value: '0.00005',
-      value_fiat: '$0',
-      icon: require('../../assets/img/coins/dogecoin.png'),
-      color: '#ba9f33'
-    };
-    let dash = {
-      title: 'Dashcoin',
-      unit_text: 'DASH',
-      persent: '0',
-      value: '0.00005',
-      value_fiat: '$0',
-      icon: require('../../assets/img/coins/dash.png'),
-      color: '#2181f4'
-    };
+    let bitcoin = new Bitcoin();
+    // bitcoin.getBalance();
+    let litecoin = new Litecoin();
+    let dogecoin = new Dogecoin();
+    let dashcoin = new Dashcoin();
+    let ethereum = new Ethereum();
+    console.log(bitcoin.title);
 
     return (
       <View>
@@ -78,11 +47,11 @@ export default class Wallet extends Component {
             <View style={styles.chart_tmp} />
           </View>
         </View>
-        {this.coinItem(btc) }
-        {this.coinItem(eth) }
-        {this.coinItem(ltc) }
-        {this.coinItem(doge) }
-        {this.coinItem(dash) }
+        {this.coinItem(bitcoin) }
+        {this.coinItem(ethereum) }
+        {this.coinItem(litecoin) }
+        {this.coinItem(dogecoin) }
+        {this.coinItem(dashcoin) }
       </View>
     );
   }
@@ -98,13 +67,13 @@ export default class Wallet extends Component {
             <Image source={coin.icon} style={styles.coin_panel_icon} />
             <View style={styles.coin_panel_name}>
               <Text style={[styles.coin_panel_coin_name, { color: coin.color }]}>{coin.title}</Text>
-              <Text style={[styles.coin_panel_coin_persent, { color: coin.color }]}>{coin.persent}%</Text>
+              <Text style={[styles.coin_panel_coin_persent, { color: coin.color }]}>{coin.percent}%</Text>
             </View>
           </View>
           <View style={styles.flexRow}>
             <View style={styles.coin_panel_value}>
-              <Text style={styles.coin_panel_fiat_value}>{coin.value_fiat}</Text>
-              <Text style={styles.coin_panel_coin_value}>{coin.value} {coin.unit_text}</Text>
+              <Text style={styles.coin_panel_fiat_value}>{coin.balanceFiat}</Text>
+              <Text style={styles.coin_panel_coin_value}>{coin.balance} {coin.unitText}</Text>
             </View>
             <Icon name='angle-right' style={styles.coin_panel_right_icon} size={20}/>
           </View>

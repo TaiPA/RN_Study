@@ -1,10 +1,28 @@
+import CoinBase from './coin-base';
 import crypto from 'crypto'
 var bip39 = require('bip39');
 var bitcoin = require('bitcoinjs-lib');
 var HDKey = require('ethereumjs-wallet/hdkey');
 var Wallet = require('ethereumjs-wallet');
 
-export default class Ether {
+export default class Ethereum extends CoinBase {
+    constructor() {
+        super();
+
+        // Properties
+        this.title = 'Ethereum';
+        this.unitText = 'ETH';
+        this.balance = 0;
+        this.balanceFiat = 0;
+        this.color = '#62688f';
+        this.icon = require('../../assets/img/coins/ethereum.png');
+        this.percent = 0;
+        this.address = '';
+        this.privateKey = '';
+        this.historyTxs = [];
+        this.unspendTxs = [];
+    }
+
     createAddr() {
         // var mnemonic = 'common creek arrive hockey pole denial bundle weather erode ride abstract finger';
         var mnemonic = 'casino develop digital nerve aisle slow inherit crawl sad evil letter sugar';
