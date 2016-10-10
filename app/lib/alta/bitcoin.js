@@ -17,7 +17,20 @@ export default class Bitcoin extends CoinBase {
         this.historyTxs = [];
         this.unspendTxs = [];
 
-        this.getBalance();
+        this.updateBalance();
+    }
+
+    updateBalance() {
+        let url = 'https://apitest.altaapps.io:8083/api/get_address_balance/BTC/' + this.address;
+        fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log('Bitcoin:getBalance:confirmed_balance: ' + responseJson.data.confirmed_balance);
+                this.balance = responseJson.data.confirmed_balance;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     getBalance() {
@@ -26,7 +39,7 @@ export default class Bitcoin extends CoinBase {
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log('Bitcoin:getBalance:confirmed_balance: ' + responseJson.data.confirmed_balance);
-                this.balance = responseJson.data.confirmed_balance;
+                return { balance : responseJson.data.confirmed_balance }
             })
             .catch((error) => {
                 console.error(error);

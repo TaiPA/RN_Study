@@ -27,27 +27,43 @@ import Ethereum from '../../lib/alta/ethereum';
 
 
 export default class Wallet extends Component {
+  constructor() {
+    super();
+    this.state = { bitcoin: new Bitcoin() }
+  }
+
+  componentWillMount() {
+    let btc = this.state.bitcoin;
+    btc.getBalance().
+      then((balance) => {
+        btc.balance = balance;
+        this.setState({ bitcoin: btc });
+      });
+    // btc.balance = 0.002;
+    // this.setState({ bitcoin: btc });
+  }
+
   render() {
-    let bitcoin = new Bitcoin();
+    // let bitcoin = new Bitcoin();
     // bitcoin.getBalance();
     let litecoin = new Litecoin();
     let dogecoin = new Dogecoin();
     let dashcoin = new Dashcoin();
     let ethereum = new Ethereum();
-    console.log(bitcoin.title);
+    console.log(this.state.bitcoin.title);
 
     return (
       <View>
         <View style={styles.flexRow}>
           <View style={styles.total_balance_panel}>
             <Text style={styles.total_balance_text}>Total Balance</Text>
-            <Text style={styles.total_balance_value}>$13,883.09</Text>
+            <Text style={styles.total_balance_value}>$13, 883.09</Text>
           </View>
           <View style={styles.chart}>
             <View style={styles.chart_tmp} />
           </View>
         </View>
-        {this.coinItem(bitcoin) }
+        {this.coinItem(this.state.bitcoin) }
         {this.coinItem(ethereum) }
         {this.coinItem(litecoin) }
         {this.coinItem(dogecoin) }
@@ -59,7 +75,7 @@ export default class Wallet extends Component {
   coinItem(coin) {
     const coin_title_color = 'color:' + coin.color;
     return (
-      <TouchableHighlight onPress={() => { console.log('aaa') } }
+      <TouchableHighlight onPress={() => { } }
         style={[styles.coin_btn]}
         underlayColor='#cccccc'>
         <View style={styles.coin_panel}>
@@ -172,10 +188,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   chart_tmp: {
-    height:140,
-    width:140,
-    borderWidth:25,
-    borderRadius:70,
+    height: 140,
+    width: 140,
+    borderWidth: 25,
+    borderRadius: 70,
     borderColor: '#ebebeb'
   },
   button_panel: {
