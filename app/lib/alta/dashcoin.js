@@ -12,7 +12,7 @@ export default class Dashcoin extends CoinBase {
         this.color = '#2181f4';
         this.icon = require('../../assets/img/coins/dash.png');
         this.percent = 0;
-        this.address = '';
+        this.address = 'XdEaYyj1dNxdkc6N42tG8D22piZiFpxmKx';
         this.privateKey = '';
         this.historyTxs = [];
         this.unspendTxs = [];

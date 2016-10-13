@@ -12,12 +12,12 @@ export default class Bitcoin extends CoinBase {
         this.color = '#f6931a';
         this.icon = require('../../assets/img/coins/bitcoin.png');
         this.percent = 0;
-        this.address = '1L2zSwsbkbY9nqGeq1tGurWP1BQekUF9v9';
+        this.address = '13RuoVLJd34qw4HETJzwEQAunDq5yGP81K';
         this.privateKey = '';
         this.historyTxs = [];
         this.unspendTxs = [];
 
-        this.updateBalance();
+        // this.updateBalance();
     }
 
     updateBalance() {

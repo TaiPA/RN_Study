@@ -24,21 +24,34 @@ import Litecoin from '../../lib/alta/litecoin';
 import Dogecoin from '../../lib/alta/dogecoin';
 import Dashcoin from '../../lib/alta/dashcoin';
 import Ethereum from '../../lib/alta/ethereum';
+import Utils from '../../utils';
+// import Api from '../api/api';
 
 
 export default class Wallet extends Component {
   constructor() {
     super();
-    this.state = { bitcoin: new Bitcoin() }
+    this.state = {
+      bitcoin: new Bitcoin(),
+      litecoin: new Litecoin(),
+      dogecoin: new Dogecoin(),
+      dashcoin: new Dashcoin(),
+      ethereum: new Ethereum(),
+    }
   }
 
   componentWillMount() {
-    let btc = this.state.bitcoin;
-    btc.getBalance().
-      then((balance) => {
-        btc.balance = balance;
-        this.setState({ bitcoin: btc });
-      });
+    console.log('componentWillMount');
+    // this.getBTCBalance();
+    // this.getLTCBalance();
+    this.getBalance();
+    this.getBalanceETH();
+    // let btc = this.state.bitcoin;
+    // Api(btc.address).
+    //   then((balance) => {
+    //     btc.balance = balance;
+    //     this.setState({ bitcoin: btc });
+    //   });
     // btc.balance = 0.002;
     // this.setState({ bitcoin: btc });
   }
@@ -46,11 +59,10 @@ export default class Wallet extends Component {
   render() {
     // let bitcoin = new Bitcoin();
     // bitcoin.getBalance();
-    let litecoin = new Litecoin();
-    let dogecoin = new Dogecoin();
-    let dashcoin = new Dashcoin();
-    let ethereum = new Ethereum();
-    console.log(this.state.bitcoin.title);
+    // let litecoin = new Litecoin();
+    // let dogecoin = new Dogecoin();
+    // let dashcoin = new Dashcoin();
+    // let ethereum = new Ethereum();
 
     return (
       <View>
@@ -63,11 +75,11 @@ export default class Wallet extends Component {
             <View style={styles.chart_tmp} />
           </View>
         </View>
-        {this.coinItem(this.state.bitcoin) }
-        {this.coinItem(ethereum) }
-        {this.coinItem(litecoin) }
-        {this.coinItem(dogecoin) }
-        {this.coinItem(dashcoin) }
+        {this.coinItem(this.state.bitcoin)}
+        {this.coinItem(this.state.ethereum)}
+        {this.coinItem(this.state.litecoin)}
+        {this.coinItem(this.state.dogecoin)}
+        {this.coinItem(this.state.dashcoin)}
       </View>
     );
   }
@@ -91,7 +103,7 @@ export default class Wallet extends Component {
               <Text style={styles.coin_panel_fiat_value}>{coin.balanceFiat}</Text>
               <Text style={styles.coin_panel_coin_value}>{coin.balance} {coin.unitText}</Text>
             </View>
-            <Icon name='angle-right' style={styles.coin_panel_right_icon} size={20}/>
+            <Icon name='angle-right' style={styles.coin_panel_right_icon} size={20} />
           </View>
         </View>
       </TouchableHighlight>
@@ -100,6 +112,125 @@ export default class Wallet extends Component {
 
   onPressBtnNext() {
     console.log('Press next button');
+  }
+
+  getBTCBalance() {
+    let url = 'https://apitest.altaapps.io:8083/api/get_address_balance/BTC/' + this.state.bitcoin.address;
+    fetch(url)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log('Bitcoin:getBalance:confirmed_balance: ' + responseJson.data.confirmed_balance);
+        let btc = this.state.bitcoin;
+        btc.balance = responseJson.data.confirmed_balance;
+        this.setState({
+          bitcoin: btc
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  getLTCBalance() {
+    let url = 'https://apitest.altaapps.io:8083/api/get_address_balance/LTC/' + this.state.litecoin.address;
+    fetch(url)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log('Bitcoin:getBalance:confirmed_balance: ' + responseJson.data.confirmed_balance);
+        let ltc = this.state.litecoin;
+        ltc.balance = responseJson.data.confirmed_balance;
+        this.setState({
+          litecoin: ltc
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  getBalance() {
+    let url = 'https://apitest.altaapps.io:8083/api';
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([{
+        call: 'getBalance',
+        data: [
+          {
+            network: 'BTC',
+            addresses: [this.state.bitcoin.address]
+          },
+          {
+            network: 'LTC',
+            addresses: [this.state.litecoin.address]
+          },
+          {
+            network: 'DOGE',
+            addresses: [this.state.dogecoin.address]
+          },
+          {
+            network: 'DASH',
+            addresses: [this.state.dashcoin.address]
+          }
+        ],
+      }])
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+
+        let btc = this.state.bitcoin;
+        // btc.balance = responseJson.getBalance.BTC.
+        let ltc = this.state.litecoin;
+        let doge = this.state.dogecoin;
+        let dash = this.state.dashcoin;
+
+
+        btc.balance = Utils.formatNumber('BTC', this.parseBalance(responseJson.getBalance.BTC));
+        ltc.balance = Utils.formatNumber('LTC', this.parseBalance(responseJson.getBalance.LTC));
+        doge.balance = Utils.formatNumber('DOGE', this.parseBalance(responseJson.getBalance.DOGE));
+        dash.balance = Utils.formatNumber('DASH', this.parseBalance(responseJson.getBalance.DASH));
+
+        this.setState({
+          bitcoin: btc,
+          litecoin: ltc,
+          dogecoin: doge,
+          dashcoin: dash
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  parseBalance(data) {
+    for (i in data) {
+      return data[i].balance;
+    }
+
+  }
+
+  getBalanceETH() {
+    //https://api.etherscan.io/api?module=account&action=balance&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&tag=latest&apikey=YourApiKeyToken
+    // API key : BGZ7995PJVHFRB7KGQRKWMFRU5UQQMCQWB
+    let url = 'https://api.etherscan.io/api?module=account&action=balance&address=' + this.state.ethereum.address + '&tag=latest&apikey=BGZ7995PJVHFRB7KGQRKWMFRU5UQQMCQWB'
+    fetch(url)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        let balance = Utils.formatNumber('ETH', responseJson.result / Math.pow(10, 18));
+        let eth = this.state.ethereum;
+        eth.balance = balance;
+        this.setState({
+          ethereum: eth
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
 

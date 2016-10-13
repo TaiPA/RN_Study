@@ -17,7 +17,7 @@ export default class Ethereum extends CoinBase {
         this.color = '#62688f';
         this.icon = require('../../assets/img/coins/ethereum.png');
         this.percent = 0;
-        this.address = '';
+        this.address = '0x5d533ec17e02288e13fd5ec6342d3ea99481e678';
         this.privateKey = '';
         this.historyTxs = [];
         this.unspendTxs = [];

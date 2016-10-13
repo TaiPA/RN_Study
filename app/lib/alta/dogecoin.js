@@ -12,7 +12,7 @@ export default class Dogecoin extends CoinBase {
         this.color = '#ba9f33';
         this.icon = require('../../assets/img/coins/dogecoin.png');
         this.percent = 0;
-        this.address = '';
+        this.address = 'DHN2mdzpY52rDeyTEdbVgAcLFqv97YzyC7';
         this.privateKey = '';
         this.historyTxs = [];
         this.unspendTxs = [];

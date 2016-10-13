@@ -12,7 +12,7 @@ export default class Litecoin extends CoinBase {
         this.color = '#c0c4c5';
         this.icon = require('../../assets/img/coins/litecoin.png');
         this.percent = 0;
-        this.address = '';
+        this.address = 'Ld8H8YqWkaYiPKqZ6vgD63x5Xz7aAdQVVs';
         this.privateKey = '';
         this.historyTxs = [];
         this.unspendTxs = [];
