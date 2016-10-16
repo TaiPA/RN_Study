@@ -28,7 +28,7 @@ export default class SelectLanguage extends Component {
         <ClvBox title={'Select Language'} style={styles.clv_box}>
           <View style={styles.content_panel}></View>
           <View style={styles.button_panel}>
-            <Button title='Next' type='main' onPress={this.onPressBtnNext} />
+            <Button title='Next' type='main' onPress={() => {this.props.onPushRoute('TERM-CONDITION') }} />
           </View>
         </ClvBox>
         <View style={styles.blank_footer_panel}>
@@ -38,7 +38,7 @@ export default class SelectLanguage extends Component {
   }
 
   onPressBtnNext() {
-    console.log('Press next button');
+    
   }
 
   generatePassphases() {

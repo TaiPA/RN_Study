@@ -24,7 +24,7 @@ export default class TermAndCondition extends Component {
         <ClvBox title={'Terms & Condition'} style={styles.clv_box}>
           <View style={styles.content_panel}></View>
           <View style={styles.button_panel}>
-            <Button title='Next' type='main' onPress={this.onPressBtnNext} />
+            <Button title='Next' type='main' onPress={() => this.onPressBtnNext()} />
           </View>
         </ClvBox>
         <View style={styles.blank_header_panel} />
@@ -34,6 +34,7 @@ export default class TermAndCondition extends Component {
 
   onPressBtnNext() {
     console.log('Press next button');
+    this.props.onPushRoute('CREATE-RESTORE')
   }
 
   generatePassphases() {

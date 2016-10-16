@@ -44,7 +44,7 @@ export default class SetWalletName extends Component {
             </View>
             <View style={styles.button_panel}>
               <Button title='Back' type='ghost' onPress={this.onPressBtnNext} />
-              <Button title='Done' type='main' onPress={this.onPressBtnNext} />
+              <Button title='Done' type='main' onPress={() => this.props.onPushRoute('DASHBOARD')} />
             </View>
           </ClvBox>
           <View style={styles.blank_panel} />

@@ -26,8 +26,8 @@ export default class CreateRestoreWallet extends Component {
           <Image source={require('../assets/img/logo-mixed@2x.png') } />
         </View>
         <ClvBox title={'Create or Restore'} style={styles.clv_box} body_style={styles.content_panel}>
-          <Button title='Create New Wallet' type='main' onPress={this.onPressBtnNext} style={styles.big_btn}/>
-          <Button title='Restore Wallet' type='ghost' onPress={this.onPressBtnNext} style={styles.big_btn}/>
+          <Button title='Create New Wallet' type='main' onPress={() => this.props.onPushRoute('SET-WALLET-NAME')} style={styles.big_btn}/>
+          <Button title='Restore Wallet' type='ghost' onPress={() => this.onPressBtnNext()} style={styles.big_btn}/>
         </ClvBox>
         <View style={styles.blank_footer_panel}>
         </View>
@@ -37,6 +37,7 @@ export default class CreateRestoreWallet extends Component {
 
   onPressBtnNext() {
     console.log('Press next button');
+    // this.props.onPushRoute('SET-WALLET-NAME');
   }
 }
 
