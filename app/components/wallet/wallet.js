@@ -149,7 +149,7 @@ export default class Wallet extends Component {
   }
 
   getBalance() {
-    let url = 'https://apitest.altaapps.io:8083/api';
+    let url = 'https://block.altaapps.io/api/';
     fetch(url, {
       method: 'POST',
       headers: {
@@ -178,7 +178,9 @@ export default class Wallet extends Component {
         ],
       }])
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        return response.json()})
       .then((responseJson) => {
         console.log(responseJson);
 

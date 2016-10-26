@@ -2,6 +2,11 @@ export default class Utils {
     // format number to printout
     static formatNumber(type, value) {
         console.log(type + '   -   ' + value);
+
+        if (value === undefined) {
+            return 0;
+        }
+
         switch (type) {
             case 'BTC':
                 return parseFloat(value.toFixed(6));
